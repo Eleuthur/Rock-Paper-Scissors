@@ -46,26 +46,29 @@ function playGame() {
     let wins = 0;
     let ties = 0;
     let loses = 0;
-    for (let i = 0; i < 4; i++ ) {
+    let resultMessage = "";
+
+    for (let i = 0; i < 5; i++ ) {
+        playerSelection = prompt("Please enter your choice");
+        const computerSelection = getComputerChoice();
         let result = playround(playerSelection, computerSelection);
         switch (result) {
             case "Winner":
                 wins++;
-                console.log('You won! ${playerSelection} beats ${computerSelection}');
+                resultMessage = `You won! ${playerSelection} beats ${computerSelection}`;
                 break;
             case "Loser":
                 loses++;
-                console.log('You lose! ${computerSelection} beats ${playerSelection}');
+                resultMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
                 break;
             case "Tie":
                 ties++;
-                console.log("It's a tie");
+                resultMessage = "It's a tie";
                 break;
         }
+        console.log(resultMessage);
     }
     }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
 
 playGame();
