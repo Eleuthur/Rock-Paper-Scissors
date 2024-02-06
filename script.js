@@ -8,29 +8,33 @@ function playround(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
+    let lose = "Loser";
+    let win = "Winner";
+    let tie = "Tie";
+
     if (playerSelection === computerSelection) {
-        return("It's a tie!!");
+        return(tie);
     } else {
         switch (playerSelection) {
             case "rock":
                 if (computerSelection === "paper") {
-                    return("You lose! Paper beats Rock");
+                    return(lose);
                 } else {
-                    return("You win! Rock beats Scissors");
+                    return(win);
                 }
             break;
             case "paper":
                 if (computerSelection === "rock") {
-                    return("You win! Paper beats Rock");
+                    return(win);
                 } else {
-                    return("You lose! Scissors beats Paper");
+                    return(lose);
                 }
             break;
             case "scissors":
                 if (computerSelection === "rock") {
-                    return("You lose! Rock beats Scissors");
+                    return(lose);
                 } else {
-                    return("You win! Scissors beats Paper");
+                    return(win);
                 }
             break;
         }
