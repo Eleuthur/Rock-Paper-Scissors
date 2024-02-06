@@ -40,9 +40,33 @@ function playround(playerSelection, computerSelection) {
         }
     }
 }    
-    
+  
+function playGame() {
+
+    let wins = 0;
+    let ties = 0;
+    let loses = 0;
+    for (let i = 0; i < 4; i++ ) {
+        let result = playround(playerSelection, computerSelection);
+        switch (result) {
+            case "Winner":
+                wins++;
+                console.log('You won! '${playerSelection} ' beats '${computerSelection});
+                break;
+            case "Loser":
+                loses++;
+                console.log('You lose! '${computerSelection} ' beats '${playerSelection});
+                break;
+            case "Tie":
+                ties++;
+                console.log("It's a tie");
+                break;
+        }
+    }
+    }
+}
 
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 
-console.log(playround(playerSelection, computerSelection));
+playGame();
