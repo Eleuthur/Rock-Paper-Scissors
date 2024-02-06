@@ -51,11 +51,11 @@ function playGame() {
         switch (result) {
             case "Winner":
                 wins++;
-                console.log('You won! '${playerSelection} ' beats '${computerSelection});
+                console.log('You won! ${playerSelection} beats ${computerSelection}');
                 break;
             case "Loser":
                 loses++;
-                console.log('You lose! '${computerSelection} ' beats '${playerSelection});
+                console.log('You lose! ${computerSelection} beats ${playerSelection}');
                 break;
             case "Tie":
                 ties++;
@@ -64,7 +64,6 @@ function playGame() {
         }
     }
     }
-}
 
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
