@@ -40,45 +40,18 @@ function playround(playerSelection, computerSelection) {
         }
     }
 }    
-  
-function playGame() {
 
-    let wins = 0;
-    let ties = 0;
-    let loses = 0;
-    let resultMessage = "";
-    let endResultMessage = "";
+const rock = document.querySelector('#Rock');
+rock.addEventListener('click', () => {
+    console.log(playround("Rock", getComputerChoice()));
+});
 
-    for (let i = 0; i < 5; i++ ) {
-        playerSelection = prompt("Please enter your choice");
-        const computerSelection = getComputerChoice();
-        let result = playround(playerSelection, computerSelection);
-        switch (result) {
-            case "Winner":
-                wins++;
-                resultMessage = `You won! ${playerSelection} beats ${computerSelection}`;
-                break;
-            case "Loser":
-                loses++;
-                resultMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
-                break;
-            case "Tie":
-                ties++;
-                resultMessage = "It's a tie";
-                break;
-        }
-        console.log(resultMessage);
-    }
+const paper = document.querySelector('#Paper');
+paper.addEventListener('click', () => {
+    console.log(playround("Paper", getComputerChoice()));
+});
 
-    if (wins > loses) {
-        endResultMessage = `You win! you won ${wins} rounds`;
-    } else if (loses > wins) {
-        endResultMessage = `You lose! you won ${wins} rounds`;
-    } else {
-        endResultMessage = `It's a tie, you won ${wins} rounds`;
-    }
-    console.log(endResultMessage);
-    }
-
-
-playGame();
+const scissors = document.querySelector('#Scissors');
+scissors.addEventListener('click', () => {
+    console.log(playround("Scissors", getComputerChoice()));
+});
