@@ -13,37 +13,41 @@ function playround(playerSelection, computerSelection) {
     let tie = "Tie";
 
     if (playerSelection === computerSelection) {
-        return(tie);
+        return("tie");
     } else {
         switch (playerSelection) {
             case "rock":
                 if (computerSelection === "paper") {
-                    return(lose);
+                    return("lose");
                 } else {
-                    return(win);
+                    return("win");
                 }
             break;
             case "paper":
                 if (computerSelection === "rock") {
-                    return(win);
+                    return("win");
                 } else {
-                    return(lose);
+                    return("lose");
                 }
             break;
             case "scissors":
                 if (computerSelection === "rock") {
-                    return(lose);
+                    return("lose");
                 } else {
-                    return(win);
+                    return("win");
                 }
             break;
         }
     }
 }    
 
+const results = document.querySelector('#results');
+const resultMessage = document.createElement('p');
+
 const rock = document.querySelector('#Rock');
 rock.addEventListener('click', () => {
-    console.log(playround("Rock", getComputerChoice()));
+    resultMessage.textContent = playround("Paper", getComputerChoice());
+    results.appendChild(resultMessage.cloneNode(true));
 });
 
 const paper = document.querySelector('#Paper');
