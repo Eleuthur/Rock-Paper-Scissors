@@ -1,6 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const results = document.querySelector('#results');
+const resultMessage = document.createElement('p');
+const score = document.querySelector('#score');
+const scoreDetail = document.createElement('p');
+
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
     let number = Math.floor(Math.random() * 3);
@@ -23,60 +28,72 @@ function playround(playerSelection, computerSelection) {
             case "rock":
                 if (computerSelection === "paper") {
                     updateScore("lose");
-                    return("lose");
                 } else {
-                    updateScore("win");
-                    return("win");              
+                    updateScore("win");              
                 }
             break;
             case "paper":
                 if (computerSelection === "rock") {
                     updateScore("win");
-                    return("win");
                 } else {
                     updateScore("lose");
-                    return("lose");
                 }
             break;
             case "scissors":
                 if (computerSelection === "rock") {
                     updateScore("lose");
-                    return("lose");
                 } else {
                     updateScore("win");
-                    return("win");
                 }
             break;
         }
     }
 }    
 
-const results = document.querySelector('#results');
-const resultMessage = document.createElement('p');
-const score = document.querySelector('#score');
-const scoreDetail = document.createElement('p');
-
 const rock = document.querySelector('#Rock');
 rock.addEventListener('click', () => {
-    score.appendChild(scoreDetail);
-    scoreDetail.textContent = `Player ${playerScore}, Computer ${computerScore}`;
-    resultMessage.textContent = playround("Rock", getComputerChoice());
-    results.appendChild(resultMessage.cloneNode(true));
+    playround("Rock", getComputerChoice());
 });
 
 const paper = document.querySelector('#Paper');
 paper.addEventListener('click', () => {
-    resultMessage.textContent = playround("Paper", getComputerChoice());
-    results.appendChild(resultMessage.cloneNode(true));
+    playround("Paper", getComputerChoice());
 });
 
 const scissors = document.querySelector('#Scissors');
 scissors.addEventListener('click', () => {
-    resultMessage.textContent = playround("Scissors", getComputerChoice());
-    results.appendChild(resultMessage.cloneNode(true));
+    playround("Scissors", getComputerChoice());
 });
 
 function updateScore(result) {
-    // add switch statement to update score
-    // output score text to score paragraph
+    switch(result) {
+        case "win":
+            playerScore++;
+            results.appendChild(resultMessage);
+            resultMessage.textContent = `You won this round`;
+            score.appendChild(scoreDetail);
+            scoreDetail.textContent = `Current Score: Player ${playerScore}, Computer ${computerScore}`;
+            break;
+        case "lose":
+            computerScore++;
+            results.appendChild(resultMessage);
+            resultMessage.textContent = `You lost this round`;
+            score.appendChild(scoreDetail);
+            scoreDetail.textContent = `Current Score: Player ${playerScore}, Computer ${computerScore}`;
+            break;
+
+        case "tie":
+            results.appendChild(resultMessage);
+            resultMessage.textContent = `This round was a tie`;
+            score.appendChild(scoreDetail);
+            scoreDetail.textContent = `Current Score: Player ${playerScore}, Computer ${computerScore}`;
+            break;
+    }
+    if (playerScore === 5) {
+        score.appendChild(scoreDetail);
+        scoreDetail.textContent = `Congratulations you won the game, ${playerScore} to ${computerScore}`;
+    } else if (computerScore === 5) {
+        score.appendChild(scoreDetail);
+        scoreDetail.textContent = `Sorry but you lost the game, ${computerScore} to ${playerScore}`;
+    }
 };
